@@ -1,34 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Trial task for frontend developer
 
-## Getting Started
+In this trial task, you are asked to create an application that provides a simple create-and-retrieve interface for a cars inventory. The application is required to be designed as an SPA based on React.JS. The application must feature a grid suitable to represent a paged sorted list of cars (total number of cars in the inventory might exceed 10000 items). Besides that, the application must provide a form that allows to add a new car into the inventory. The application should rely on mocked backend responses that you are free to define.
 
-First, run the development server:
+The application's domain model contains a single entity definition, an example is shown below.
 
-```bash
-npm run dev
-# or
-yarn dev
+```json
+{
+	"id":"420256c5-3684-414c-904b-6027461cdf5f",
+	"make":"Bentley", 
+	"model":"Continental GT", 
+	"year":"2001"
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Your submission must contain the following artifacts besides the application code:
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+* A test suite for the frontend application
+* A Dockerfile descriptor
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+# Suggestions for the frontend
+* Use TypeScript (Don't need to be strict)
+* Develop using NextJS framework
+* Use SASS and TailwindCSS for styling
+* Use hooks and functional-style code as much as possible
+* GraphQL would be a plus
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+# Submission delivery
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Please fork this repository and create a pull request once your submission is ready.
