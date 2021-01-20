@@ -1,12 +1,12 @@
 import { FC } from "react";
 
-interface CardProps {
+interface CarProps {
   make: string;
   model: string;
   year: string;
 }
 
-const Card: FC<CardProps> = ({ make, model, year }) => {
+const Car: FC<CarProps> = ({ make, model, year }) => {
   return (
     <article className="h-80 w-60 p-9 box-content flex flex-col bg-white shadow transition-all duration-300 hover:shadow-2xl">
       <main>
@@ -23,4 +23,4 @@ const Card: FC<CardProps> = ({ make, model, year }) => {
   );
 };
 
-export default Card;
+export default Car;

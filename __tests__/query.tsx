@@ -1,5 +1,4 @@
 import React from "react";
-import { graphql } from "msw";
 import { MockedProvider } from "@apollo/client/testing";
 import { render, waitFor } from "@testing-library/react";
 
@@ -11,14 +10,6 @@ import Home from "../pages/index";
 
 const CARS_NUMBER = 23;
 const cars = new Array(CARS_NUMBER).fill(null).map(createCar);
-
-graphql.query("GetCars", (req, res, ctx) => {
-  return res(
-    ctx.data({
-      cars,
-    })
-  );
-});
 
 const mocks = [
   {

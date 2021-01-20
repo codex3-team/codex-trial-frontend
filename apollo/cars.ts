@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import faker from "faker";
 
-export interface Car {
+export interface ICar {
   id: string;
   make: string;
   model: string;
