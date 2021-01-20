@@ -11,6 +11,9 @@ const typeDefs = gql`
   type Query {
     cars(limit: Int = 1, offset: Int = 0): [Car!]!
   }
+  type Mutation {
+    addCar(make: String!, model: String!, year: String!): [Car!]!
+  }
 `;
 
 export default typeDefs;

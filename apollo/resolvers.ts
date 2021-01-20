@@ -1,15 +1,27 @@
 import { IResolvers } from "apollo-server-micro";
-import cars, { ICar } from "./cars";
+import cars, { ICar, newCar } from "./cars";
 
-interface Args {
+interface QueryArgs {
   limit: number;
   offset: number;
 }
 
+interface MutationArgs {
+  make: string;
+  model: string;
+  year: string;
+}
+
 const resolvers: IResolvers = {
   Query: {
-    cars(parent, args: Args): ICar[] {
+    cars(parent, args: QueryArgs): ICar[] {
       return cars.slice(args.offset, args.offset + args.limit);
+    },
+  },
+  Mutation: {
+    addCar(parent, args: MutationArgs): ICar[] {
+      cars.unshift(newCar(args));
+      return cars;
     },
   },
 };

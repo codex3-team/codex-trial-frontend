@@ -17,6 +17,13 @@ export function createCar() {
   };
 }
 
+export function newCar(data: Pick<ICar, "make" | "model" | "year">) {
+  return {
+    id: uuidv4(),
+    ...data,
+  };
+}
+
 const cars = new Array(20000).fill(null).map(createCar);
 
 export default cars;
