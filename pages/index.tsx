@@ -7,7 +7,10 @@ const cars = new Array(10).fill(null).map(createCar);
 
 const Home = () => {
   return (
-    <div className="my-20 mx-auto w-9/12 grid grid-cols-cards gap-10">
+    <div
+      data-testid="cards-container"
+      className="my-20 mx-auto w-9/12 grid grid-cols-cards gap-10"
+    >
       {cars.map(({ id, make, model, year }) => (
         <Card key={id} make={make} model={model} year={year} />
       ))}
