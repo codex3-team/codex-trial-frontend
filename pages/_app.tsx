@@ -4,7 +4,7 @@ import { useApollo } from "../apollo/client";
 import "../styles/globals.scss";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const client = useApollo();
+  const client = useApollo(pageProps.initialApolloState);
 
   return (
     <ApolloProvider client={client}>

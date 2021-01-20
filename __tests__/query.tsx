@@ -1,8 +1,11 @@
 import React from "react";
 import { graphql } from "msw";
-import { render } from "@testing-library/react";
+import { MockedProvider } from "@apollo/client/testing";
+import { render, waitFor } from "@testing-library/react";
 
-import { createCar } from "../apollo/resolvers";
+import { GET_CARS } from "../pages/index";
+import { initializeApollo } from "../apollo/client";
+import { createCar } from "../apollo/cars";
 
 import Home from "../pages/index";
 
@@ -17,14 +20,40 @@ graphql.query("GetCars", (req, res, ctx) => {
   );
 });
 
-test("renders cards", () => {
-  const { getByTestId, getAllByRole } = render(<Home />);
-  const cardsContainer = getByTestId("cards-container");
-  expect(cardsContainer).toBeInTheDocument();
-  expect(cardsContainer.children.length).toBe(CARS_NUMBER);
+const mocks = [
+  {
+    request: {
+      query: GET_CARS,
+      variables: {
+        offset: 0,
+        limit: CARS_NUMBER,
+      },
+    },
+    result: {
+      data: {
+        cars,
+      },
+    },
+  },
+];
 
-  const carsTitle = getAllByRole("heading", { level: 1 });
-  carsTitle.forEach((title, i) => {
-    expect(title).toHaveTextContent(cars[i].make);
+test("renders cards", async () => {
+  const client = initializeApollo();
+
+  const { getByTestId, getAllByRole } = render(
+    <MockedProvider mocks={mocks} addTypename={false}>
+      <Home limit={CARS_NUMBER} />
+    </MockedProvider>
+  );
+  await waitFor(() => {
+    const cardsContainer = getByTestId("cards-container");
+
+    expect(cardsContainer).toBeInTheDocument();
+    expect(cardsContainer.children.length).toBe(CARS_NUMBER);
+
+    const carsTitle = getAllByRole("heading", { level: 1 });
+    carsTitle.forEach((title, i) => {
+      expect(title).toHaveTextContent(cars[i].make);
+    });
   });
 });
