@@ -9,7 +9,7 @@ interface Car {
   year: string;
 }
 
-function sampleCar() {
+export function createCar() {
   return {
     id: uuidv4(),
     make: faker.lorem.word(),
@@ -18,7 +18,7 @@ function sampleCar() {
   };
 }
 
-const cars = new Array(10).fill(null).map(sampleCar);
+const cars = new Array(10).fill(null).map(createCar);
 
 interface Args {
   limit: number;
