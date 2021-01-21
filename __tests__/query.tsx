@@ -6,7 +6,7 @@ import { GET_CARS } from "../pages/index";
 import { initializeApollo } from "../apollo/client";
 import { createCar } from "../apollo/cars";
 
-import Home from "../pages/index";
+import Index from "../pages/index";
 
 const CARS_NUMBER = 23;
 const cars = new Array(CARS_NUMBER).fill(null).map(createCar);
@@ -29,11 +29,9 @@ const mocks = [
 ];
 
 test("renders cards", async () => {
-  const client = initializeApollo();
-
   const { getByTestId, getAllByRole } = render(
     <MockedProvider mocks={mocks} addTypename={false}>
-      <Home limit={CARS_NUMBER} />
+      <Index limit={CARS_NUMBER} />
     </MockedProvider>
   );
   await waitFor(() => {

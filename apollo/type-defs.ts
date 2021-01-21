@@ -12,7 +12,7 @@ const typeDefs = gql`
     cars(limit: Int = 1, offset: Int = 0): [Car!]!
   }
   type Mutation {
-    addCar(make: String!, model: String!, year: String!): [Car!]!
+    addCar(make: String!, model: String!, year: String!): Car!
   }
 `;
 

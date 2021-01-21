@@ -19,9 +19,10 @@ const resolvers: IResolvers = {
     },
   },
   Mutation: {
-    addCar(parent, args: MutationArgs): ICar[] {
-      cars.unshift(newCar(args));
-      return cars;
+    addCar(parent, args: MutationArgs): ICar {
+      const car = newCar(args);
+      cars.unshift(car);
+      return car;
     },
   },
 };
