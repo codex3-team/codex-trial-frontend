@@ -28,4 +28,3 @@ Your submission must contain the following artifacts besides the application cod
 # Submission delivery
 
 Please fork this repository and create a pull request once your submission is ready.
-
