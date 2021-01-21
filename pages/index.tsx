@@ -1,11 +1,18 @@
 import Head from "next/head";
 import { Fragment, FC, useState } from "react";
+import { FixedSizeGrid as Grid } from "react-window";
 import { gql, useQuery } from "@apollo/client";
 
 import { initializeApollo } from "../apollo/client";
 import { ICar } from "../apollo/cars";
 
 import Car from "../components/Car";
+import Cell, {
+  NUM_COLUMNS,
+  WIDTH,
+  HEIGHT,
+  GUTTER_SIZE,
+} from "../components/Cell";
 import AddCar from "../components/AddCar";
 
 const NUM_OF_CARS = 10000;
@@ -54,11 +61,19 @@ const Index: FC<Props> = ({ offset = 0, limit }) => {
     <Fragment>
       <div
         data-testid="cards-container"
-        className="my-20 mx-auto w-9/12 grid grid-cols-cards gap-10"
+        className="my-8 flex flex-col justify-center items-center"
       >
-        {data?.cars.map(({ id, make, model, year }) => (
-          <Car key={id} make={make} model={model} year={year} />
-        ))}
+        <Grid
+          itemData={data?.cars || []}
+          columnCount={NUM_COLUMNS}
+          columnWidth={WIDTH + GUTTER_SIZE}
+          height={850}
+          rowCount={Math.ceil(NUM_OF_CARS / NUM_COLUMNS)}
+          rowHeight={HEIGHT + GUTTER_SIZE}
+          width={1350}
+        >
+          {Cell}
+        </Grid>
       </div>
       <button
         onClick={() => setShowNewCar(true)}
@@ -93,5 +108,14 @@ export async function getStaticProps() {
     },
   };
 }
+
+// <div
+//   data-testid="cards-container"
+//   className="my-20 mx-auto w-9/12 grid grid-cols-cards gap-10"
+// >
+//   {data?.cars.map(({ id, make, model, year }) => (
+//     <Car key={id} make={make} model={model} year={year} />
+//   ))}
+// </div>;
 
 export default Index;

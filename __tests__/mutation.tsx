@@ -78,10 +78,5 @@ test("renders cards", async () => {
   await waitFor(() => {
     expect(onClose).toHaveBeenCalled();
     expect(refetch).toHaveBeenCalled();
-
-    // const carsTitle = getAllByRole("heading", { level: 1 });
-    // carsTitle.forEach((title, i) => {
-    //   expect(title).toHaveTextContent(cars[i].make);
-    // });
   });
 });
